@@ -1,3 +1,31 @@
+<?php
+
+    $kategoriler = ["Programlama","Web Geliştirme","Mobil Uygulamalar","Ofis Uygulamalar"];
+    $kurslar = [
+        [
+            "id" => 1,
+            "baslik" => "Web Geliştirme Kursu",
+            "aciklama" => "Güzel bir kurs",
+            "resim" => "1.jpg",
+            "onay" => true
+        ],
+        [
+            "id" => 2,
+            "baslik" => "Python Kursu",
+            "aciklama" => "Güzel bir kurs",
+            "resim" => "2.jpg",
+            "onay" => true
+        ],
+        [
+            "id" => 1,
+            "baslik" => "Javascript Kursu",
+            "aciklama" => "Güzel bir kurs",
+            "resim" => "3.jpg",
+            "onay" => false
+        ],
+    ];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,62 +54,41 @@
         <div class="row">
             <div class="col-3">
                 <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action">Programlama</a>
-                    <a href="#" class="list-group-item list-group-item-action">Web Geliştirme</a>
-                    <a href="#" class="list-group-item list-group-item-action">Mobil Uygulamalar</a>
+                    <?php for($i = 0; $i < count($kategoriler); $i++): ?>
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <?php echo $kategoriler[$i]; ?>
+                        </a>
+                    <?php endfor; ?>
                 </div>
             </div>
             <div class="col-9">
-                <div class="card mb-3">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="img/1.jpg" class="img-fluid rounded-start">
-                        </div>
+                <?php foreach($kurslar as $kurs): ?>
+                    
+                    <?php if($kurs["onay"]): ?>
+                        <div class="card mb-3">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="img/<?php echo $kurs['resim'];?>" class="img-fluid rounded-start">
+                            </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">Web Geliştirme</h5>
+                                <h5 class="card-title">
+                                    <?php echo $kurs["baslik"]; ?>
+                                </h5>
                                 <p>
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex dolorem quas veniam eaque ad facilis ea perferendis totam aspernatur excepturi.
+                                    <?php echo $kurs["aciklama"]; ?>
                                 </p>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="card mb-3">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="img/2.jpg" class="img-fluid rounded-start">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Python Kursu</h5>
-                                <p>
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex dolorem quas veniam eaque ad facilis ea perferendis totam aspernatur excepturi.
-                                </p>
-                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card mb-3">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="img/3.jpg" class="img-fluid rounded-start">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Javascript Kursu</h5>
-                                <p>
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex dolorem quas veniam eaque ad facilis ea perferendis totam aspernatur excepturi.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <?php endif; ?>
+
+                <?php endforeach;?>
+
             </div>
         </div>
     </div>
-
-
 
 </body>
 </html>
