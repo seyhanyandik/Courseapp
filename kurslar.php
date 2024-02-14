@@ -1,5 +1,4 @@
 <?php include('partials/_db.php') ?>
-
 <?php include('partials/_header.php') ?>
 <?php include('partials/_navbar.php') ?>
 
@@ -11,7 +10,7 @@
         <div class="col-9">
             <?php foreach($kurslar as $kurs): ?>
                     
-                <?php if($kurs["onay"] and $kurs["anasayfa"]): ?>
+                <?php if($kurs["onay"]): ?>
                     <?php include('partials/_kurs.php') ?>
                 <?php endif; ?>
 
@@ -21,4 +20,5 @@
     </div>
 </div>
 <?php include('partials/_footer.php') ?>
+    
                         
